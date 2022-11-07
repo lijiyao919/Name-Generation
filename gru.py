@@ -2,12 +2,12 @@ import torch
 import torch.nn as nn
 from utils import device
 
-class RNN(nn.Module):
+class GRU(nn.Module):
     def __init__(self, input_size, n_hidden, n_categories, output_size, n_layers):
-        super(RNN, self).__init__()
+        super(GRU, self).__init__()
         self.n_hidden = n_hidden
         self.n_layers = n_layers
-        self.rnn = nn.RNN(input_size+n_categories, n_hidden, n_layers)
+        self.rnn = nn.GRU(input_size+n_categories, n_hidden, n_layers)
 
         self.fc = nn.Linear(n_hidden, output_size)
         self.dropout = nn.Dropout(0.1)
